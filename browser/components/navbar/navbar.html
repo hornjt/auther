@@ -6,7 +6,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="/"><img src="logo.png"></a>
+			<a\ class="navbar-brand" href="/"><img src="logo.png"></a>
 		</div>
 
 		<div class="collapse navbar-collapse">
@@ -14,7 +14,7 @@
 				<li ng-class="{active: pathStartsWithStatePath('users')}"><a ui-sref="users">users</a></li>
 				<li ng-class="{active: pathStartsWithStatePath('stories')}"><a ui-sref="stories">stories</a></li>
 			</ul>
-			<ul class="nav navbar-nav navbar-right">
+			<ul class="nav navbar-nav navbar-right" ng-model="loaded">
 				<li ui-sref-active="active"><a ui-sref="signup">signup</a></li>
 				<li ui-sref-active="active"><a ui-sref="login">login</a></li>
 				<li ng-click="logout()"><button class="navbar-btn btn btn-default">logout</button></li>

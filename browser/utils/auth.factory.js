@@ -1,11 +1,12 @@
 app.factory('AuthFactory', function($http){
 	var currentUser;
+	var loaded;
 
 	return {
 		signup: function(person) {
 			$http.post('/api/users', person)
 				.then(function(newPerson) {
-					console.log(newPerson);
+					// console.log(newPerson);
 					currentUser = newPerson.data;
 					console.log("Inside the signup .then route", currentUser);
 				});
@@ -22,11 +23,8 @@ app.factory('AuthFactory', function($http){
 				});
 		},
 		getUser: function() {
-			console.log(currentUser);
+			// console.log(currentUser);
 			return currentUser;
-		}
-		isAdmin: function() {
-			return currentUser.isAdmin;
 		}
 	};
 });

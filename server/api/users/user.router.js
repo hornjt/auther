@@ -53,6 +53,14 @@ router.post('/login', function (req, res, next) {
 	.then(null,next);
 });
 
+router.get('/auth/me', function(req,res,next){
+	User.findOne({ _id: req.session.userId})
+		.then(function(user) {
+			res.send(user);
+		})
+		.then(null, next);
+})
+
 router.get('/logout', function(req,res,next){
 	req.session.destroy();
 	res.status(200).send();

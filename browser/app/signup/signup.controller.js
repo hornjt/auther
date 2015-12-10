@@ -4,6 +4,15 @@ app.controller('Signup', function($scope, AuthFactory) {
 		var email = $scope.email;
 		var password = $scope.password;
 		console.log(email, password);
-		AuthFactory.signup(email, password);
+		var person = {
+			email: email,
+			password: password,
+			isAdmin: $scope.checkboxModel.value
+		};
+		AuthFactory.signup(person);
 	}
+
+	$scope.checkboxModel = {
+		value: false
+	};
 });

@@ -35,8 +35,28 @@ router.post('/', function (req, res, next) {
 
 router.post('/login', function (req, res, next) {
 	console.log("Inside the post route login side");
-	
+	User.findOne({"email": req.body.email})
+	.then(function(user) {
+		if (user) {
+			if (user.password === req.body.password) {
+				req.session.userId = user._id;
+				res.status(200).json(user);
+			}
+			else {
+				res.send("password does not match");
+			}
+		}
+		else {
+			res.status(401).json(user);
+		}
+	})
+	.then(null,next);
 });
+
+router.get('/logout', function(req,res,next){
+	req.session.destroy();
+	res.status(200).send();
+})
 
 router.get('/:id', function (req, res, next) {
 	req.requestedUser.getStories()

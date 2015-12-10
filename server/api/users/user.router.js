@@ -25,11 +25,17 @@ router.get('/', function (req, res, next) {
 });
 
 router.post('/', function (req, res, next) {
+	console.log("Inside the post route server side")
 	User.create(req.body)
 	.then(function (user) {
 		res.status(201).json(user);
 	})
 	.then(null, next);
+});
+
+router.post('/login', function (req, res, next) {
+	console.log("Inside the post route login side");
+	
 });
 
 router.get('/:id', function (req, res, next) {
